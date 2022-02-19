@@ -34,7 +34,6 @@ data <- raw_data %>%
 
 data
 
-
 # Plot the data ----
 group_colours <- c(Slave = "black", Free = "red")
 
@@ -42,7 +41,6 @@ data %>%
   ggplot() +
   geom_area(aes(x = Year, y = Percent, fill = Status), show.legend = FALSE) +
   scale_fill_manual(values = group_colours) +
-  # geom_vline(xintercept = seq(1790, 1870, by = 10)) +
   geom_text(
     data = raw_data,
     aes(label = glue("{Free}%"), y = 105, x = Year)
@@ -63,3 +61,5 @@ data %>%
     axis.ticks.y = element_blank(),
     plot.background = element_rect(fill = "#E0C9A6")
   )
+
+ggplot2::ggsave("submissions/2022-02-15/challenge-05.png", width = 6, height = 10)
